@@ -1,42 +1,46 @@
-# Welcome to Remix!
+# RVNE
 
-- [Remix Docs](https://remix.run/docs)
+Some future goals for this project are as follows:
 
-## Fly Setup
+## Phase I (proof of concept and architecture growing pains)
 
-1. [Install `flyctl`](https://fly.io/docs/getting-started/installing-flyctl/)
+### Nodes
 
-2. Sign up and log in to Fly
+- [ ] Number
+- [ ] Math
+- [ ] Output / Result
 
-```sh
-flyctl auth signup
-```
+### Sockets & Connectors
 
-3. Setup Fly. It might ask if you want to deploy, say no since you haven't built the app yet.
+- [ ] Input sockets
+- [ ] Output sockets
+- [ ] Connectors
 
-```sh
-flyctl launch
-```
+### Functionality
 
-## Development
+- [✅] cusotom drag n drop
+- [ ] Context menu
+- [ ] Keyboard shortcut for pop-up menu
+- [ ] Connectors drag n drop hook up
 
-From your terminal:
+### Push it forward
 
-```sh
-npm run dev
-```
+- [ ] implementations of other Nodes (possible images via SVG)
 
-This starts your app in development mode, rebuilding assets on file changes.
+## Phase II (begin the transfer to better tools)
 
-## Deployment
+- [ ] move from the DOM to the canvas API
+- [ ] add shapes
+- [ ] add colors
+- [ ] add filters
 
-If you've followed the setup instructions already, all you need to do is run this:
+## Phase III (addition of Rust via WASM)
 
-```sh
-npm run deploy
-```
+- [ ] build out some existing nodes in rust
+- [ ] test where rust will be strongest (processing of images, not UI)
 
-You can run `flyctl info` to get the url and ip address of your server.
+## Phase IV (deeper understanding)
 
-Check out the [fly docs](https://fly.io/docs/getting-started/node/) for more information.
-# rvne
+- [ ] move from canvas to WebGL
+- [ ] create texture creation nodes
+- [ ] explore audio nodes
