@@ -1,13 +1,16 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
-export default function Index() {
+
+
+function useDrag() {
   const isDragging = useRef(false);
   const dragRef = useRef<HTMLDivElement>(null);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const titleRef = useRef<HTMLDivElement>(null);
   const [shift, setShift] = useState({ x: 0, y: 0 });
+  const [position, setPosition] = useState({ x: 0, y: 0 });
 
   const onPointerDown = useCallback(event => {
-    if (dragRef.current && dragRef.current.contains(event.target)) {
+    if (dragRef.current && titleRef.current && titleRef.current.contains(event.target)) {
       isDragging.current = true;
       setShift({ x: event.clientX - dragRef.current.getBoundingClientRect().left, y: event.clientY - dragRef.current.getBoundingClientRect().top });
     }
@@ -44,11 +47,24 @@ export default function Index() {
     }
   }, [onPointerDown, onPointerUp, onPointerMove, position]);
 
+  return { dragRef, titleRef };
+}
+
+
+export default function Index() {
+  const { dragRef, titleRef } = useDrag();
+
   return (
     <main style={{ display: 'grid', fontFamily: "system-ui, sans-serif", lineHeight: "1.4", height: '100vh', width: '100vw' }}>
-      <div
-        ref={dragRef}
-        style={{ borderStyle: 'solid', height: '100px', width: '100px' }} />
-    </main>
+
+      <article style={{ display: 'flex', flexDirection: 'column', border: '2px solid', position: 'absolute' }} ref={dragRef} >
+        <h2 style={{ userSelect: 'none', textAlign: 'center', margin: '0', padding: '8px 0px' }} ref={titleRef}>number</h2>
+        <input style={{ border: 'none', fontSize: 'xx-large', outline: 'none', textAlign: 'center', padding: '0px 18px 0px 24px' }} type='number' defaultValue={0} min={0} max={10} />
+        <input style={{ outline: 'none', maxWidth: '75%', placeSelf: 'center', padding: '4px 0px' }} type='range' min={0} max={10} defaultValue={0} />
+        <button style={{ position: 'absolute', left: '95%', padding: '4%', bottom: '38%', borderRadius: '50%' }} title='output-connector' />
+      </article>
+
+    </main >
   );
 }
+
