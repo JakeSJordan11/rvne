@@ -1,0 +1,11 @@
+[data-container] {
+  position: absolute;
+  width: fit-content;
+  display: grid;
+  border-style: solid;
+  border-width: 2px;
+  -webkit-user-select: none; /* Safari ios support*/
+  user-select: none;
+  background-color: #9f8c5f;
+  z-index: 0;
+}
