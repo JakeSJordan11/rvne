@@ -6,9 +6,8 @@ Some future goals for this project are as follows:
 
 ### Nodes
 
-- [ ] Number
-- [ ] Math
-- [ ] Output / Result
+- [✅] Number
+- [✅] Math
 
 ### Sockets & Connectors
 
@@ -18,7 +17,7 @@ Some future goals for this project are as follows:
 
 ### Functionality
 
-- [✅] cusotom drag n drop
+- [✅] custom drag n drop
 - [ ] Context menu
 - [ ] Keyboard shortcut for pop-up menu
 - [ ] Connectors drag n drop hook up
