@@ -1,12 +1,11 @@
 import styles from "./styles.css";
+import type { NumberInputProps } from "./types";
 
 export function links() {
   return [{ rel: "stylesheet", href: styles }];
 }
 
-export function NumberInput(
-  props: React.InputHTMLAttributes<HTMLInputElement>
-) {
+export function NumberInput(props: NumberInputProps) {
   return (
     <input
       data-number

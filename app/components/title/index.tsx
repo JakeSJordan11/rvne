@@ -7,7 +7,7 @@ export function links() {
 
 export function Title(props: TitleProps) {
   return (
-    <h2 data-title ref={props.titleRef}>
+    <h2 ref={props.titleRef}>
       {props.value}
     </h2>
   );

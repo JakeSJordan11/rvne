@@ -7,7 +7,7 @@ export function links() {
 
 export function Container(props: ContainerProps) {
   return (
-    <article data-container ref={props.containerRef}>
+    <article ref={props.containerRef} {...props}>
       {props.children}
     </article>
   );

@@ -1,3 +1,7 @@
+:root {
+  --color-primary: hsl(42deg 25% 50%);
+}
+
 html {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
@@ -8,5 +12,5 @@ body {
   margin: 0;
   height: 100vh;
   width: 100vw;
-  background-color: hsl(42deg 25% 50%);
+  background-color: var(--color-primary);
 }

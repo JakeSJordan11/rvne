@@ -1,25 +1,21 @@
-import { useState } from "react";
 import styles from "./styles.css";
+import type { SliderProps } from "./types";
 
 export function links() {
   return [{ rel: "stylesheet", href: styles }];
 }
 
-interface SliderProps {
-  onChange: (value: string) => void;
-}
-
 export function Slider(props: SliderProps) {
-  const [value, setValue] = useState("");
 
-  function handleChange(event: string) {
-    props.onChange(event);
-    setValue(event);
+  const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { onChange } = props;
+    const { value } = event.currentTarget;
+    return onChange(value);
   }
 
-  console.log(value);
   return (
     <input
+      {...props}
       data-slider
       type="range"
       title="slider"
@@ -27,7 +23,7 @@ export function Slider(props: SliderProps) {
       min={0}
       max={10}
       defaultValue={0}
-      onChange={(event) => handleChange(event.target.value)}
+      onChange={handleOnChange}
     />
   );
 }
