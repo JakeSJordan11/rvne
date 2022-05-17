@@ -1,15 +1,19 @@
-import { Node, links as nodeLinks } from "~/components/nodes";
+import { MathNode, NumberNode, links as nodeLinks } from "~/components";
 
 export function links() {
-  return [...nodeLinks()];
-}
+  return [
+    ...nodeLinks(),
+  ];
+};
+
 export default function Index() {
   return (
     <>
-      <Node.Number />
-      <Node.Number />
-      <Node.Math />
+      <MathNode />
+      <NumberNode />
+      <svg height="100vh" width="100vw">
+        <path fill="none" stroke="black" strokeWidth={2} />
+      </svg>
     </>
   );
 }
-

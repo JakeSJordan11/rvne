@@ -1,31 +1,74 @@
-import { links as connectorLinks } from "~/components/connectors";
-import { Container, links as containerLinks } from "~/components/container";
-import { MathNode, links as mathLinks } from "~/components/nodes/math";
-import { NumberNode } from "~/components/nodes/number";
-import { links as titleLinks } from "~/components/title";
-import { links as numberLinks } from "~/components/content/number";
-import { links as sliderLinks } from "~/components/content/slider";
-import type { NodeProps } from "./types";
+import { useState } from "react";
+import { useDrag } from "~/hooks/useDrag";
+import styles from "./styles.css";
 
 export function links() {
-  return [
-    ...mathLinks(),
-    ...sliderLinks(),
-    ...numberLinks(),
-    ...titleLinks(),
-    ...containerLinks(),
-    ...connectorLinks(),
-  ];
+  return [{ rel: "stylesheet", href: styles }];
 }
 
-export function Node(props: NodeProps) {
+export function MathNode() {
+  const { titleRef, nodeRef } = useDrag();
+  const [value, setValue] = useState(0);
+
   return (
-    <Container containerRef={props.dragRef} {...props}>
-      {props.children}
-    </Container>
+    <article ref={nodeRef}>
+      <h1 title="math" ref={titleRef} >math</h1>
+      <button data-input-1 title="input" type="button" />
+      <button data-input-2 title="input" type="button" />
+      <select name="operators">
+        <option value="addition">addition</option>
+        <option value="subtraction">subtraction</option>
+        <option value="multiplication">multiplication</option>
+        <option value="division">division</option>
+      </select>
+      <input
+        data-type="number"
+        type="number"
+        title="number"
+        min={0}
+        max={10}
+        step={0.1}
+        value={value}
+        onChange={event => setValue(Number(event.target.value))}
+        readOnly
+      />
+    </article>
   );
 }
 
-Node.Number = NumberNode;
-Node.Math = MathNode;
-Node.Base = Node;
+
+
+export function NumberNode(props: any) {
+  const { titleRef, nodeRef } = useDrag();
+  const [value, setValue] = useState(0);
+
+  return (
+    <article ref={nodeRef}>
+      <h1 ref={titleRef} >
+        number
+      </h1>
+      <input
+        data-type="number"
+        type="number"
+        title="number"
+        min={0}
+        max={10}
+        step={0.1}
+        value={value}
+        readOnly
+      />
+      <input
+        data-type="slider"
+        type="range"
+        title="slider"
+        step="0.1"
+        min={0}
+        max={10}
+        defaultValue={0}
+        onChange={(event) => setValue(Number(event.target.value))}
+      />
+      <button data-output-1 title="output" type="button" ref={props.connectorRef} />
+    </article>
+  );
+}
+

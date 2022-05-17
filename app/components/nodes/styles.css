@@ -1,0 +1,69 @@
+article {
+  background-color: var(--color-primary);
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  border-style: solid;
+}
+
+h1 {
+  margin: 0;
+  text-align: center;
+  padding: 4px 0;
+  -webkit-user-select: none;
+  user-select: none;
+  border-bottom: solid;
+}
+
+input[data-type="number"] {
+  background-color: var(--color-primary);
+  margin: 0;
+  font-size: 3rem;
+  border: none;
+  text-align: center;
+  outline: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+input[data-type="slider"] {
+  margin: 0;
+}
+
+button[data-output-1] {
+  background-color: var(--color-primary);
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  align-self: flex-end;
+  top: 25%;
+  right: -8px;
+}
+
+button[data-input-1] {
+  background-color: var(--color-primary);
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  top: 25%;
+  left: -8px;
+}
+
+button[data-input-2] {
+  background-color: var(--color-primary);
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  top: 50%;
+  left: -8px;
+}
+
+select {
+  background-color: var(--color-primary);
+  text-align: center;
+  font-size: large;
+  border: none;
+}

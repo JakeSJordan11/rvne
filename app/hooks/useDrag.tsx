@@ -2,21 +2,21 @@ import { useCallback, useEffect, useRef, useState } from "react";
 
 export function useDrag() {
   const isDragging = useRef(false);
-  const dragRef = useRef<HTMLDivElement>(null);
+  const nodeRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
   const [shift, setShift] = useState({ x: 0, y: 0 });
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   const onPointerDown = useCallback((event) => {
     if (
-      dragRef.current &&
+      nodeRef.current &&
       titleRef.current &&
       titleRef.current.contains(event.target)
     ) {
       isDragging.current = true;
       setShift({
-        x: event.clientX - dragRef.current.getBoundingClientRect().left,
-        y: event.clientY - dragRef.current.getBoundingClientRect().top,
+        x: event.clientX - nodeRef.current.getBoundingClientRect().left,
+        y: event.clientY - nodeRef.current.getBoundingClientRect().top,
       });
     }
   }, []);
@@ -25,8 +25,8 @@ export function useDrag() {
     if (isDragging.current) {
       isDragging.current = false;
     }
-    if (dragRef.current) {
-      dragRef.current.style.zIndex = "0";
+    if (nodeRef.current) {
+      nodeRef.current.style.zIndex = "0";
     }
   }, []);
 
@@ -40,9 +40,9 @@ export function useDrag() {
   );
 
   useEffect(() => {
-    if (dragRef.current) {
-      dragRef.current.style.zIndex = "1";
-      dragRef.current.style.transform = `translate(${position.x}px, ${position.y}px)`;
+    if (nodeRef.current) {
+      nodeRef.current.style.zIndex = "1";
+      nodeRef.current.style.transform = `translate(${position.x}px, ${position.y}px)`;
     }
     document.addEventListener("pointerdown", onPointerDown);
     document.addEventListener("pointerup", onPointerUp);
@@ -54,5 +54,5 @@ export function useDrag() {
     };
   }, [onPointerDown, onPointerUp, onPointerMove, position]);
 
-  return { dragRef, titleRef };
+  return { nodeRef, titleRef };
 }
